@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default  function Add(){
 
@@ -33,6 +33,21 @@ export default  function Add(){
         router.push("/")
     }
 
+    const getUsers=async()=>{
+        const res=await fetch('/api/users',{cache:"no-store"})
+        const json=await res.json()
+        return json
+    }
+    useEffect(() => {
+        (async () => {
+          const users = await getUsers();
+          console.log(users);
+        })();
+      
+        return () => {
+          // this now gets called when the component unmounts
+        };
+      }, []);
 
     return(
         <div>
