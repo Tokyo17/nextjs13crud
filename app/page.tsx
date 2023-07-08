@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 
 const getUsers=async()=>{
-  const res=await fetch(process.env.BASE_URL+'/api/users',{ next: { revalidate: 0 } })
+  const res=await fetch(process.env.BASE_URL+'/api/users',{cache:"no-store"})
   const json=await res.json()
   return json
 }
