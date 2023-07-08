@@ -9,6 +9,7 @@ const getUsers=async()=>{
 
 export default async function Home() {
 
+  const url=process.env.BASE_URL
   // const users=await getUsers()
 
   
@@ -25,6 +26,8 @@ export default async function Home() {
             </div>
           </div>
         ))} */}
+        {process.env.NAME}
+        {process.env.DATABASE_URL}
       </div>
     </div>
   )
