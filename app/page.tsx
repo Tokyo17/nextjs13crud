@@ -18,14 +18,14 @@ const getUsersFromDb=async()=>{
 export default async function Home() {
 
   const url=process.env.BASE_URL
-  const users=await getUsersFromDb()
+  const users=await getUsers()
 
 
   
   return (
     <div>
       <div className='content-home'>
-        {users?.map((user:any,index:number)=>(
+        {users?.users?.map((user:any,index:number)=>(
           <div key={index} className="bingkai">
             <p >{user.name}</p>
             <p>{user.email}</p>
