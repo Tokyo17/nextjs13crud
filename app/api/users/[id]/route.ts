@@ -1,12 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 
 
 const prisma=new PrismaClient()
 
-export const GET=async (req:NextApiRequest,contex:{params:{id:string}})=>{
+export const GET=async (req:NextRequest,contex:{params:{id:string}})=>{
 
     
     const id=Number(contex.params.id)||0
