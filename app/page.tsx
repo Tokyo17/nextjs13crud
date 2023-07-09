@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client'
-import Image from 'next/image'
-
+import Items from "./items"
 
 const getUsers=async()=>{
   const res=await fetch(process.env.BASE_URL+'/api/users',{cache:"no-store"})
@@ -8,16 +6,8 @@ const getUsers=async()=>{
   return json
 }
 
-const prisma=new PrismaClient()
-
-const getUsersFromDb=async()=>{
-  const users=await prisma.users.findMany({})
-  return  users
-}
-
 export default async function Home() {
 
-  const url=process.env.BASE_URL
   const users=await getUsers()
 
 
@@ -26,17 +16,8 @@ export default async function Home() {
     <div>
       <div className='content-home'>
         {users?.users?.map((user:any,index:number)=>(
-          <div key={index} className="bingkai">
-            <p >{user.name}</p>
-            <p>{user.email}</p>
-            <div className='tombol'>
-              <button className='update'>Update</button>
-              <button className='delete'>Delete</button>
-            </div>
-          </div>
+          <Items key={index} user={user} />
         ))}
-        {process.env.NAME}
-        {/* {process.env.DATABASE_URL} */}
       </div>
     </div>
   )

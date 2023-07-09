@@ -1,10 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { use } from "react";
+
 
 const prisma=new PrismaClient
 
 export const GET = async(req: NextRequest)=>{
+    // console.log("HHHY")
     const users=await prisma.users.findMany({})
         return NextResponse.json({ users })
 }
@@ -21,4 +22,21 @@ export const POST=async(req: NextRequest)=>{
         message:"success",
         data:users
     })
+}
+export const DELETE = async (req: NextRequest) => {
+    console.log("HAAYYYYS")
+    const url = new URL(req.url).searchParams
+    const id = Number(url.get('id')) || 0
+
+    const post = await prisma.users.delete({
+        where: {
+            id: id
+        }
+    })
+
+    if (!post) {
+        return NextResponse.json({ message: "Error" }, { status: 500 })
+    }
+
+    return NextResponse.json({})
 }
