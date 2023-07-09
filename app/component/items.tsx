@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react";
 
 
 interface Props{
@@ -24,13 +25,17 @@ const handleDelete=async (id:number)=>{
 }
 
 
+const updateHandler=(id:number)=>{
+  router.push("/update/"+id)
+}
+
 
     return(
-     <div  className="bingkai">
+     <div className="bingkai">
         <p >{user.name}</p>
         <p>{user.email}</p>
         <div className='tombol'>
-          <button className='update'>Update</button>
+          <button  onClick={()=>updateHandler(user.id)} className='update'>Update</button>
           <button onClick={()=>{handleDelete(user.id)}} className='delete'>Delete</button>
         </div>
       </div>

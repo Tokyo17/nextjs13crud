@@ -28,7 +28,6 @@ export const POST=async(req: NextRequest)=>{
     })
 }
 export const DELETE = async (req: NextRequest) => {
-    console.log("HAAYYYYS")
     const url = new URL(req.url).searchParams
     const id = Number(url.get('id')) || 0
 
@@ -43,4 +42,20 @@ export const DELETE = async (req: NextRequest) => {
     }
 
     return NextResponse.json({})
+}
+
+export const PUT=async(req:NextRequest)=>{
+    const {id,name,email}= await req.json()
+    const user=await prisma.users.update({
+        where:{
+            id:Number(id)
+        },
+        data:{
+            name,email
+        }
+    })
+    return NextResponse.json({
+        message:"Update Succes",
+        data:user
+    })
 }

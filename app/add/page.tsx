@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import Form from "../component/form"
 
 export default  function Add(){
 
@@ -23,26 +24,26 @@ export default  function Add(){
                 name,email
             })
         }).then(res=>{
-            console.log(res)
+            // console.log(res)
+            router.refresh()
         }).catch(err=>{
             console.log(err)
         })
-        router.refresh()
+        
         setEmail("")
         setName("")
         setIsLoading(false)
         router.push("/")
     }
 
+    const handleName=(e:string)=>{
+        setName(e)
+    }
 
         return(
             <div>
                <div>
-                <form onSubmit={addHandler}>
-                    <input onChange={(e)=>setName(e.target.value)} required type="username"  value={name} placeholder="name" className="mt-1 px-3 py-2 border  border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500  focus:ring-1"/>
-                    <input onChange={(e)=>setEmail(e.target.value)} required type="email"  value={email} className="mt-1 px-3 py-2 border  border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500  focus:ring-1"placeholder="you@example.com" />
-                    <button   className="add">{isLoading ?"Loading..": "Add User"}</button>
-                </form>
+                <Form sendHandler={addHandler} isLoading={isLoading} setEmail={setEmail} email={email}  handleName={handleName} name={name} />
                </div>
                <p>{name}</p>
                <p>{email}</p>

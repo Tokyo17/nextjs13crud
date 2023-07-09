@@ -1,4 +1,4 @@
-import Items from "./items"
+import Items from "./component/items"
 
 const getUsers=async()=>{
   try{
@@ -24,6 +24,7 @@ export default async function Home() {
           <Items key={index} user={user} />
         ))}
       </div>
+      <div> </div>
     </div>
   )
 }
