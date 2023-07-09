@@ -7,7 +7,11 @@ const prisma=new PrismaClient
 export const GET = async(req: NextRequest)=>{
     // console.log("HHHY")
     const users=await prisma.users.findMany({})
-        return NextResponse.json({ users })
+    if (!users) {
+        return NextResponse.json({ message: "Error" }, { status: 500 })
+    }
+
+    return NextResponse.json({users})
 }
 
 export const POST=async(req: NextRequest)=>{
@@ -28,13 +32,13 @@ export const DELETE = async (req: NextRequest) => {
     const url = new URL(req.url).searchParams
     const id = Number(url.get('id')) || 0
 
-    const post = await prisma.users.delete({
+    const user = await prisma.users.delete({
         where: {
             id: id
         }
     })
 
-    if (!post) {
+    if (!user) {
         return NextResponse.json({ message: "Error" }, { status: 500 })
     }
 

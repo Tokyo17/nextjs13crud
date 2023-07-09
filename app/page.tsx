@@ -1,9 +1,14 @@
 import Items from "./items"
 
 const getUsers=async()=>{
-  const res=await fetch(process.env.BASE_URL+'/api/users',{cache:"no-store"})
+  try{
+    const res=await fetch(process.env.BASE_URL+'/api/users',{cache:"no-store"})
   const json=await res.json()
   return json
+  }catch(err){
+    console.log("errornya :",err)
+  }
+  
 }
 
 export default async function Home() {
