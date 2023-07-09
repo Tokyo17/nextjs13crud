@@ -67,7 +67,7 @@ export default function Update({params}:{params:{id:string}}){
     return(
         <div>
 
-            <Form isLoadingGetUpdate={isLoadingGetUpdate} sendHandler={sendHandler} handleName={handleName} name={name}  setEmail={setEmail} email={email} isLoading={isLoading} />
+            <Form textButton={"Update Note"} isLoadingGetUpdate={isLoadingGetUpdate} sendHandler={sendHandler} handleName={handleName} name={name}  setEmail={setEmail} email={email} isLoading={isLoading} />
         </div>
     )
 }

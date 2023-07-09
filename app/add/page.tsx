@@ -43,10 +43,10 @@ export default  function Add(){
         return(
             <div>
                <div>
-                <Form sendHandler={addHandler} isLoading={isLoading} setEmail={setEmail} email={email}  handleName={handleName} name={name} />
+                <Form textButton={"Add Note"} sendHandler={addHandler} isLoading={isLoading} setEmail={setEmail} email={email}  handleName={handleName} name={name} />
                </div>
-               <p>{name}</p>
-               <p>{email}</p>
+               {/* <p>{name}</p>
+               <p>{email}</p> */}
             </div>
         )    
       

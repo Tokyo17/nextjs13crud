@@ -2,11 +2,13 @@ import Link from "next/link";
 
 export default function Navbar(){
     return(
-        <div>
-            <ul>
-                <li><Link href="/">home</Link></li>
-                <li><Link href="/add">add</Link> </li>
-            </ul>
+        <div className="nav">
+            <h1 className="title-main">
+                <Link href="/">Sticy Wall</Link>
+            </h1>
+            <div className="add-note-nav">
+                <Link href="/add">+</Link> 
+            </div>
         </div>
     )
 }

@@ -18,13 +18,10 @@ export default async function Home() {
 
   
   return (
-    <div>
       <div className='content-home'>
         {users?.users?.map((user:any,index:number)=>(
           <Items key={index} user={user} />
         ))}
       </div>
-      <div> </div>
-    </div>
   )
 }

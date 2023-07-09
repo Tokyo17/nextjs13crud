@@ -32,11 +32,15 @@ const updateHandler=(id:number)=>{
 
     return(
      <div className="bingkai">
-        <p >{user.name}</p>
+        <div className="title-item">
+          <h1>{user.name}</h1>
+          <span onClick={()=>{handleDelete(user.id)}}>X</span>
+        </div>
         <p>{user.email}</p>
         <div className='tombol'>
-          <button  onClick={()=>updateHandler(user.id)} className='update'>Update</button>
-          <button onClick={()=>{handleDelete(user.id)}} className='delete'>Delete</button>
+          <div onClick={()=>updateHandler(user.id)} className="update-card-button">
+            &#128221;
+          </div>
         </div>
       </div>
     )
