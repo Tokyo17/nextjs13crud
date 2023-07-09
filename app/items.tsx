@@ -1,7 +1,5 @@
 "use client"
-import { Users } from "@prisma/client"
 import { useRouter } from "next/navigation"
-import { DELETE } from "./api/users/route"
 
 
 interface Props{
